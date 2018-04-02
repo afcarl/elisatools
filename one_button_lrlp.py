@@ -43,7 +43,7 @@ def main():
                     abortOnFail=False))
 
   # normalize_lexicon.py
-  steps.append(Step('normalize_lexicon_tg.py',
+  steps.append(Step('normalize_lexicon_tg.py', name="normalize_lexicon.py",
                     help="heuristically convert lexicon into something more machine readable",
                     abortOnFail=False))
 
