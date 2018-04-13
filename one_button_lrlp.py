@@ -95,11 +95,11 @@ def main():
   parser = argparse.ArgumentParser(description="Process a LRLP into flat format",
                                    formatter_class= \
                                    argparse.ArgumentDefaultsHelpFormatter)
-  parser.add_argument("--tarball", "-t", nargs='+', default=['lrlp.tar.gz'],
-                      help='path to gzipped tars for processing (all tars considered to be part of the same package)')
-  parser.add_argument("--language", "-l", default='uzb',
-                      help='three letter code of language')
-  parser.add_argument("--lexversion", "-L", default='il3',
+  parser.add_argument("--tarball", "-t", nargs='+', required=True,
+                      help='path to gzipped tars for processing (all tars considered to be part of the same package). Ex: lrlp.tar.gz')
+  parser.add_argument("--language", "-l", required=True,
+                      help='three letter code of language. example "uzb"')
+  parser.add_argument("--lexversion", "-L", default='1.5',
                       help='version of lexicon to extract (may need to create a new one)')
 
   parser.add_argument("--key", "-k", default=None,
@@ -123,12 +123,13 @@ def main():
                       help='step to stop at (inclusive)')
   parser.add_argument("--liststeps", "-x", nargs=0, action=make_action(steps),
                       help='print step list and exit')
-  parser.add_argument("--ruby", default="/opt/local/bin/ruby2.2", help='path to ruby (2.1 or higher)')
+  parser.add_argument("--ruby", default="ruby", help='path to ruby (2.1 or higher)')
   addonoffarg(parser, "swap", help="swap source/target in found data (e.g. il3)", default=False)
   try:
     args = parser.parse_args()
   except IOError as msg:
     parser.error(str(msg))
+    sys.exit(2)
 
   if args.expdir is not None and args.start <= 0:
     sys.stderr.write \
