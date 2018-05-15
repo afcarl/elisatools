@@ -23,7 +23,6 @@ def main():
                       help="input lexicon files")
   parser.add_argument("--outfile", "-o", help="output file")
   parser.add_argument("--version", "-v", choices=["1.4", "1.5", "il3", "il5", "il6"], default="1.5", help="dtd version")
-  
 
   try:
     args = parser.parse_args()
