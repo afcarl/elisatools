@@ -180,7 +180,7 @@ def scan_sf_ann_doc_ids(dir_path, out_path=None):
         log.info(f'Found {len(doc_ids)} documents with situation frame annotations')
 
     if out_path:
-        with open(out_path) as fo:
+        with open(out_path, 'w') as fo:
             fo.write("\n".join(doc_ids))
     return doc_ids
 
