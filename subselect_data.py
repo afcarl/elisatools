@@ -75,11 +75,9 @@ def main():
         args = parser.parse_args()
     except IOError as msg:
         parser.error(str(msg))
+        raise msg
 
     sys.stderr.write("Executing {}\n".format(sys.argv))
-    #  reader = codecs.getreader('utf8')
-    #  writer = codecs.getwriter('utf8')
-    #  outfile = writer(args.outfile)
 
     indir = args.indir
     origsizes = args.sizes
