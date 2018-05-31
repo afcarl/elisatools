@@ -51,7 +51,7 @@ def main(filelist, wcfile, outfile, sizes, categories, **args):
         word, count = line.strip().split('\t')
         counts[word] = int(count)
     tot_count = sum(counts.values())
-    assert sum(args['sizes']) < tot_count, f'Splits of sizes {sizes} not possible; total words= {tot_count}'
+    assert sum(sizes) < tot_count, f'Splits of sizes {sizes} not possible; total words= {tot_count}'
     files = []
     for line in filelist:
         files.append(line.strip().split()[0])

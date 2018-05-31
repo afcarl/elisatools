@@ -172,7 +172,8 @@ def scan_sf_ann_doc_ids(dir_path, out_path=None):
         if files:
             for file in files:
                 if file.endswith('.tab'):
-                    doc_id = '.'.join(file.split('.')[:2])
+                    # skip last two segments in file name. Example XYXYXYXY.needs.tab
+                    doc_id = '.'.join(file.split('.')[:-2])
                     doc_ids.add(doc_id)
     if not doc_ids:
         log.warning(f"No situation annotations found. Looked at {dir_path}")
